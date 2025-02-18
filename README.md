@@ -48,6 +48,7 @@ pom.xml (Project Object Model) is the configuration file for Maven.It defines pr
 
 <dependencies>
 	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+	
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
@@ -59,13 +60,17 @@ pom.xml (Project Object Model) is the configuration file for Maven.It defines pr
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>
  </dependency>
-    <dependency>
+ 
+<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
-    </dependency>
-  </dependencies>
+</dependency>
+</dependencies>
+
+
+**3.Pojo file(Student.java)**
 
 
 
