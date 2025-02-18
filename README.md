@@ -1,5 +1,15 @@
 **Spring program**
 
+ApplicationContext and BeanFactory serve the same core purpose: Managing and Configuring Beans in a Spring Application.
+
+**BeanFactory**
+BeanFactory is the basic container in Spring.
+It lazily loads beans (creates them only when needed).
+
+**ApplicationContext**
+ApplicationContext is a more powerful version of BeanFactory.
+It eagerly loads all beans when the application starts.
+
 **Application.java**
 package com.example.Spring;
 import org.springframework.context.ApplicationContext;
@@ -8,7 +18,8 @@ public class Application
 	public static void main(String[] args)
 	{
 	ApplicationContext context=new ClassPathXmlApplicationContext("constructorconfig.xml");//ClassPathXmlApplicationContext loads Spring configuration from an XML file in the classpath.
-	BeanFactory factory =new ClassPathXmlApplicationContext("constructorconfig.xml") ;//Beanfactory used for small applications 
+	
+ 	BeanFactory factory =new ClassPathXmlApplicationContext("constructorconfig.xml") ;//Beanfactory used for small applications 
 
  	Employee emp=(Employee)context.getBean("employee"); 	//Spring retrieves the Employee bean from the container, casts it to an Employee object, and assigns it to the emp variable.
 	emp.show();
@@ -20,6 +31,9 @@ public class Application
 
 package com.example.Spring;
 public  class Employee{
+		private int id;
+		private String name;
+		Address ad;
 	public  Employee(){}
 
 	public Employee(int id,String,Address a)
@@ -95,7 +109,10 @@ Spring uses XML or Java-based configuration to create these objects automaticall
     <bean id="employee" class="com.example.Spring.Employee">
         <constructor-arg value="101"/>
         <constructor-arg value="John Doe"/>
-	
+
+ 	//Constructor Injection with Dependent Object
+  	//The ref attribute is used to define the reference of another object
+   
  	<constructor-arg ref="address"/>  <!-- Injecting the Address bean -->
 
  	<property name="name" value="John Doe"/> //property based injection
