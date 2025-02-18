@@ -29,9 +29,10 @@ Maps Java objects to database tables using annotations or XML.
 </hibernate-configuration>
 
 
-hibernates executed query looks like:
+Hibernates executed query looks like:
 **eg:**
 To print the details of the student with the specified id;
+
 Hibernate: 
     select
         student0_.id as id1_0_0_,
