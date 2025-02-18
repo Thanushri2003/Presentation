@@ -93,30 +93,31 @@ Methods:
 
 public class Insert {
 	public static void main(String[] args){
-		System.out.println("Project started..");
+	System.out.println("Project started..");
 
-		Configuration cfg = new Configuration(); 		 //Creates a Configuration object, which is the starting point of Hibernate.
-		cfg.configure();					//Reads the hibernate.cfg.xml file.
-		SessionFactory factory = cfg.buildSessionFactory();	//holds metadata of db,converts the xml to java objects
+	Configuration cfg = new Configuration(); 		 //Creates a Configuration object, which is the starting point of Hibernate.
+	cfg.configure();					//Reads the hibernate.cfg.xml file.
+	SessionFactory factory = cfg.buildSessionFactory();	//holds metadata of db,converts the xml to java objects
+ 
+//SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
-  		//Session management
-		Session session= factory.openSession();			//Opens a new Session, which acts as a bridge between the Java application and the database,to interact with db.
-		Transaction tx =session.beginTransaction(); 		//Hibernate starts a database transaction.
+  	//Session management
+	Session session= factory.openSession();			//Opens a new Session, which acts as a bridge between the Java application and the database,to interact with db.
+	Transaction tx =session.beginTransaction(); 		//Hibernate starts a database transaction.
 									//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
   
-            Student st = new Student();
-            st.setId(id);  // Manually setting ID
-            st.setName(name);
-            st.setCity(city);
+        Student st = new Student();
+        st.setId(id);  // Manually setting ID
+        st.setName(name);
+        st.setCity(city);
 
-            session.save(st);				//the data is not immediately written to the database. It is first stored in Hibernate's cache (temporary memory).
+        session.save(st);				//the data is not immediately written to the database. It is first stored in Hibernate's cache (temporary memory).
         }
 
         // Commit transaction
-        tx.commit();					//
+        tx.commit();					//Executes the actual database operation statement and saves the data permanently.
 	session.close();				//Closes the session (disconnects from the database).
         factory.close();				//Closes the SessionFactory (shuts down Hibernate).
-        scanner.close();
 }
  
 
