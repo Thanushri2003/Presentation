@@ -86,6 +86,54 @@ Methods:
  2.setmethod
  3.constructors
 
+
  ** 4.Crud operation file:**
+ Insert
+
+
+public class Insert {
+	public static void main(String[] args){
+		System.out.println("Project started..");
+
+		Configuration cfg = new Configuration();  //Creates a Configuration object, which is the starting point of Hibernate.
+		cfg.configure();		//Reads and loads the hibernate.cfg.xml file.
+		SessionFactory factory = cfg.buildSessionFactory();//holds metadata of db,converts the xml to java objects
+		Session session= factory.openSession();
+		Transaction tx =session.beginTransaction(); 
+
+  //user input
+	Scanner scanner = new Scanner(System.in);
+	System.out.print("Enter the number of students: ");
+        int numStudents = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        for (int i = 1; i <= numStudents; i++) {
+            System.out.println("Enter details for student " + i + ":");
+
+            System.out.print("Enter ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            System.out.print("Enter Name: ");
+            String name = scanner.nextLine();
+
+            System.out.print("Enter City: ");
+            String city = scanner.nextLine();
+
+            // Creating Student object
+            Student st = new Student();
+            st.setId(id);  // Manually setting ID
+            st.setName(name);
+            st.setCity(city);
+
+            // Save student to database
+            session.save(st);
+        }
+
+        // Commit transaction
+        tx.commit();
+        factory.close();
+        scanner.close();
+}
  
 
