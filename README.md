@@ -95,44 +95,27 @@ public class Insert {
 	public static void main(String[] args){
 		System.out.println("Project started..");
 
-		Configuration cfg = new Configuration();  //Creates a Configuration object, which is the starting point of Hibernate.
-		cfg.configure();		//Reads and loads the hibernate.cfg.xml file.
-		SessionFactory factory = cfg.buildSessionFactory();//holds metadata of db,converts the xml to java objects
-		Session session= factory.openSession();
-		Transaction tx =session.beginTransaction(); 
+		Configuration cfg = new Configuration(); 		 //Creates a Configuration object, which is the starting point of Hibernate.
+		cfg.configure();					//Reads the hibernate.cfg.xml file.
+		SessionFactory factory = cfg.buildSessionFactory();	//holds metadata of db,converts the xml to java objects
 
-  //user input
-	Scanner scanner = new Scanner(System.in);
-	System.out.print("Enter the number of students: ");
-        int numStudents = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-
-        for (int i = 1; i <= numStudents; i++) {
-            System.out.println("Enter details for student " + i + ":");
-
-            System.out.print("Enter ID: ");
-            int id = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
-
-            System.out.print("Enter Name: ");
-            String name = scanner.nextLine();
-
-            System.out.print("Enter City: ");
-            String city = scanner.nextLine();
-
-            // Creating Student object
+  		//Session management
+		Session session= factory.openSession();			//Opens a new Session, which acts as a bridge between the Java application and the database,to interact with db.
+		Transaction tx =session.beginTransaction(); 		//Hibernate starts a database transaction.
+									//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
+  
             Student st = new Student();
             st.setId(id);  // Manually setting ID
             st.setName(name);
             st.setCity(city);
 
-            // Save student to database
-            session.save(st);
+            session.save(st);				//the data is not immediately written to the database. It is first stored in Hibernate's cache (temporary memory).
         }
 
         // Commit transaction
-        tx.commit();
-        factory.close();
+        tx.commit();					//
+	session.close();				//Closes the session (disconnects from the database).
+        factory.close();				//Closes the SessionFactory (shuts down Hibernate).
         scanner.close();
 }
  
