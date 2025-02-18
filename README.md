@@ -107,9 +107,10 @@ public class Insert {
 									//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
   
         Student st = new Student();
-        st.setId(id);  // Manually setting ID
-        st.setName(name);
-        st.setCity(city);
+	st.setId(101);        
+	st.setName("Alice");   
+	st.setCity("New York"); 
+
 
         session.save(st);				//the data is not immediately written to the database. It is first stored in Hibernate's cache (temporary memory).
         }
