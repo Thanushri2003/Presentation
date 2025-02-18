@@ -17,7 +17,7 @@ Maps Java objects to database tables using annotations or XML.
 <hibernate-configuration>  //Root element of the Hibernate configuration file. 
 <session-factory>         //Defines a session factory to manage database connections,created once per database and is thread-safe.
 <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-<property name="connection.url">jdbc:mysql://localhost:3306/db name</property>
+<property name="connection.url">jdbc:mysql://localhost:3306/**db name**</property>
 <property name="connection.username">root</property>
 <property name="connection.password">Password@12</property>
 <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property> // This tells Hibernate that the application is using MySQL 8 as the database.
@@ -70,7 +70,22 @@ pom.xml (Project Object Model) is the configuration file for Maven.It defines pr
 </dependencies>
 
 
+
 **3.Pojo file(Student.java)**
 
+@Entity
+public class Student {
 
+	@Id
+	private int id;
+	private String name;
+	private String city;}
+ 
+Methods:
+ 1.getmethod
+ 2.setmethod
+ 3.constructors
+
+ ** 4.Crud operation file:**
+ 
 
