@@ -94,7 +94,7 @@ public class Operations {
 	public static void main(String[] args){
 	System.out.println("Project started..");
 
-	Configuration cfg = new Configuration(); 		 //Creates a Configuration object, which is the starting point of Hibernate.
+	Configuration cfg = new Configuration(); 		//Creates a Configuration object, which is the starting point of Hibernate.
 	cfg.configure();					//Reads the hibernate.cfg.xml file.
 	SessionFactory factory = cfg.buildSessionFactory();	//holds metadata of db,converts the xml to java objects
  
@@ -102,7 +102,7 @@ public class Operations {
 
 	Session session= factory.openSession();			//Opens a new Session, which acts as a bridge between the Java application and the database,to interact with db.
 	Transaction tx =session.beginTransaction(); 		//Hibernate starts a database transaction.
-									//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
+								//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
 **//for insert operation**
         Student st = new Student();
 	st.setId(101);        
