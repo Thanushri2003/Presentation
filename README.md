@@ -16,7 +16,7 @@ public class Application
 }
 
 
-**Employee.java**-pojo class
+**Employee.java**
 
 package com.example.Spring;
 public  class Employee{
@@ -66,14 +66,18 @@ public class Address
 	this.country=country;
 	}
 
- 	@override
+ 	@override //every Java class inherits toString() from the Object class.
 	public String toString()
 	{		
-	return city+" "+country;
+	return city+" "+country; //if toString() is overridden,we can control what gets printed when an object is displayed.
 	}
 }
 
 **constructorconfig.xml**
+
+A Spring Bean is just an object that is created and managed by Spring instead of manually using new.
+Spring uses XML or Java-based configuration to create these objects automatically.
+
 
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
