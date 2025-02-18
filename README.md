@@ -89,10 +89,8 @@ Methods:
 
 
  ** 4.Crud operation file:**
- Insert
 
-
-public class Insert {
+public class Operations {
 	public static void main(String[] args){
 	System.out.println("Project started..");
 
@@ -102,11 +100,10 @@ public class Insert {
  
 //SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
-**//for insert operation**
 	Session session= factory.openSession();			//Opens a new Session, which acts as a bridge between the Java application and the database,to interact with db.
 	Transaction tx =session.beginTransaction(); 		//Hibernate starts a database transaction.
 									//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
-  
+**//for insert operation**
         Student st = new Student();
 	st.setId(101);        
 	st.setName("Alice");   
