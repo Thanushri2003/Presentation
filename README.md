@@ -102,7 +102,7 @@ public class Insert {
  
 //SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
-  	//Session management
+**//for insert operation**
 	Session session= factory.openSession();			//Opens a new Session, which acts as a bridge between the Java application and the database,to interact with db.
 	Transaction tx =session.beginTransaction(); 		//Hibernate starts a database transaction.
 									//Hibernate internally sends an SQL command: BEGIN TRANSACTION;
@@ -111,12 +111,27 @@ public class Insert {
 	st.setId(101);        
 	st.setName("Alice");   
 	st.setCity("New York"); 
+	session.save(st);				//the data is not immediately written to the database. It is first stored in Hibernate's cache (temporary memory).
+ 
+**//for retrive operation**
+ 	 Student s1=(Student)session.get(Student.class, id);//select query
+	 System.out.println(s1);
+	 System.out.println("Fetching object using load:");
+	 Student s2=(Student)session.load(Student.class,101); //select query
+	 System.out.println(s2);
 
+**//for update operation**
+	Student s1=(Student)session.get(Student.class, 102); 
+        s1.setName("Bijoy");
+        session.save(s1); 
 
-        session.save(st);				//the data is not immediately written to the database. It is first stored in Hibernate's cache (temporary memory).
+ **//for delete operation**
+ 	Student s=session.get(Student.class, id); //get id
+        session.delete(s); 
+        tx.commit(); 
+        				
         }
 
-        // Commit transaction
         tx.commit();					//Executes the actual database operation statement and saves the data permanently.
 	session.close();				//Closes the session (disconnects from the database).
         factory.close();				//Closes the SessionFactory (shuts down Hibernate).
