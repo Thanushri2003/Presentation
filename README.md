@@ -80,12 +80,29 @@ public class Student {
 	@Id
 	private int id;
 	private String name;
-	private String city;}
+	private String city;
+ 	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+ }
  
-Methods:
+**Methods:
  1.getmethod
  2.setmethod
  3.constructors
+**
 
 
  ** 4.Crud operation file:**
