@@ -10,6 +10,7 @@ It lazily loads beans (creates them only when needed).
 ApplicationContext is a more powerful version of BeanFactory.
 It eagerly loads all beans when the application starts.
 
+
 **Application.java**
 package com.example.Spring;
 import org.springframework.context.ApplicationContext;
